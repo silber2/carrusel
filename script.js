@@ -1,32 +1,24 @@
-const d = document,
-w = window;
+let images = [
+  "img/a.jpg",
+  "img/piscis-retrato-mujer-hermosa.jpg",
+  "img/tienda-ropa-tienda-ropa-perchas-tienda-boutique-moderna.jpg",
+  "img/HD-wallpaper-clothes-store-interior.jpg"
+];
 
-const $sliderContainer = d.getElementById("slider-container");
-const $slider = d.querySelector(".slider");
-const $sliderSection = d.querySelectorAll(".slider__section");
-const $sliderImg = d.querySelectorAll(".slider__section-img");
+var currentImageIndex = 0;
 
-let $sliderLast = $sliderSection[$sliderSection.length -1];
-
-$slider.insertAdjacentElement("afterbegin", $sliderLast);
-
-
-function next2() {
-    $sliderFirst = d.querySelectorAll(".slider__section")[0];
-    $slider.style.transform = "translateX(-200%)"
-    $slider.style.transition = "all .2s"
-    setTimeout(() => {
-        $slider.style.transition = "none";
-        $slider.insertAdjacentElement("beforeend", $sliderFirst);
-        $slider.style.transform = "translateX(-100%)";
-    }, 500);
+function changeBackground() {
+  currentImageIndex = (currentImageIndex + 1) % images.length;
+  var imageUrl = "url('" + images[currentImageIndex] + "')";
+  var sliderElement = document.getElementById("background-slider");
+  sliderElement.style.backgroundImage = imageUrl;
+  sliderElement.classList.add("background-slider");
+  setTimeout(function() {
+    sliderElement.classList.remove("background-slider");
+  }, 1000);
 }
 
-$boton2 = d.getElementById("boton2");
-$boton2.addEventListener("click", () => {
-    next2()
-})
-
 setInterval(() => {
-   // next2()
-}, 3000);
+  changeBackground()
+}, 6000);
+
