@@ -1,0 +1,10 @@
+ .sec-1 {
+    height: 100vh;
+    #background-slider {
+        height: 100%;
+        width: 100%;
+        background-position: center;
+        background-size: cover;
+        transition: background-image 2s ease;
+}
+    }
